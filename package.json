@@ -1,0 +1,18 @@
+{
+    "name": "node-chat",
+    "description": "a basic chat made with node.js",
+    "version": "0.1.0",
+    "license": "GPL",
+    "dependencies": {
+        "express": "~4.17.1",
+        "ejs": "~2.7.1",
+        "cookie-session": "~1.3.3",
+        "socket.io": "~2.2.0",
+        "ent": "~2.2.0"
+    },
+    "author": "Sylvain Michel <sylvain.michel@2018.icam.fr>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SylwekFr/Node-Chat"
+    }
+}
