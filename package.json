@@ -4,12 +4,15 @@
     "version": "0.1.0",
     "license": "GPL",
     "dependencies": {
-        "express": "~4.17.1",
+        "bootstrap": "~4.3.1",
+        "popper.js": "~1.15.0",
         "ejs": "~2.7.1",
+        "ent": "~2.2.0",
+        "express": "~4.17.1",
         "express-session": "~1.16.2",
         "express-socket.io-session": "~1.3.5",
         "socket.io": "~2.2.0",
-        "ent": "~2.2.0"
+        "jquery": "3.4.1"
     },
     "author": "Sylvain Michel <sylvain.michel@2018.icam.fr>",
     "repository": {

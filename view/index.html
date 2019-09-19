@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Node chat</title>
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
     </head>
  
     <body>
@@ -12,8 +13,9 @@
             <input type="submit" value="send" id="sendmsg" />
         </form>
         <div id="chatarea"></div>
-        <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="/js/jquery.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
         <script>
             var socket = io.connect('http://localhost:8080');
             var pseudo = prompt('Chose a pseudo :');

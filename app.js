@@ -1,4 +1,5 @@
-let app = require('express')();
+let express = require('express')
+let app = express();
 let server = require('http').createServer(app);
 let io = require('socket.io').listen(server);
 let ent = require('ent');
@@ -10,6 +11,9 @@ let session = require('express-session')({
 var sharedsession = require("express-socket.io-session");
 
 app.use(session)
+.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
+.use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
+.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 .get('/', function (req, res) {
     res.sendFile('view/index.html' , { root : __dirname});
   });
