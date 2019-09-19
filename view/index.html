@@ -7,19 +7,39 @@
  
     <body>
         <h1>Node.js let you chat</h1>
-        <p><input type="button" value="send" id="poke" /></p>
+        <form action='/' method=post id='msgform'>
+            <input type="txt" name="msg" id="msg" paceholder="type here your message"/>
+            <input type="submit" value="send" id="sendmsg" />
+        </form>
+        <div id="chatarea"></div>
         <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script>
             var socket = io.connect('http://localhost:8080');
             var pseudo = prompt('Chose a pseudo :');
             socket.emit('newbie', pseudo);
-            socket.on('msg', function(msg) {
-            alert('server : ' + msg);
+            document.title = pseudo + ' - ' + document.title;
+            socket.on('connect', function() {
+                $('#chatarea').prepend("<p><em >hi "+ pseudo+' you join the chat </em></p>');
             })
-            $('#poke').click(function() {
-                socket.emit('msg', 'this message is send to server')
+            socket.on('msg', function(data) {
+                printmsg(data.pseudo, data.msg);
             })
+
+            socket.on('newbie', function(pseudo) {
+                $('#chatarea').prepend("<p><em >"+ pseudo+' join the chat </em></p>');
+            })
+
+            $('#msgform').submit(function() {
+                let msg=$('#msg').val();
+                socket.emit('msg', msg);
+                printmsg(pseudo, msg);
+                $('#msg').val('').focus();
+                return false;
+            });
+            function printmsg(pseudo, msg) {
+                $('#chatarea').prepend("<p><strong >"+ pseudo+'</strong> ' +msg+'</p>');
+            }
         </script>
     </body>
 </html>

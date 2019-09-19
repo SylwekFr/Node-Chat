@@ -15,14 +15,18 @@ app.use(session)
   });
 io.use(sharedsession(session));
 io.sockets.on('connection', function (socket, pseudo) {
-    socket.emit('msg', 'you are connected !');
-    socket.broadcast.emit('msg', 'someone else is connected !!!');
+    socket.emit('connect');
+
     socket.on('newbie', function(pseudo) {
+        pseudo=ent.encode(pseudo);
         socket.handshake.session.pseudo = pseudo;
         socket.handshake.session.save();
+        socket.broadcast.emit('newbie', socket.handshake.session.pseudo)
     })
     .on('msg', function(msg) {
-        console.log(socket.handshake.session.pseudo + ' clicked :' + msg);
+        msg=ent.encode(msg);
+        pseudo=socket.handshake.session.pseudo
+        socket.broadcast.emit('msg', {pseudo : pseudo, msg: msg })
     });
 });
 server.listen(8080);
