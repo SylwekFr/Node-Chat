@@ -2,7 +2,7 @@
     "name": "node-chat",
     "description": "a basic chat made with node.js",
     "version": "0.1.0",
-    "license": "GPL",
+    "license": "W3C",
     "dependencies": {
         "bootstrap": "~4.3.1",
         "popper.js": "~1.15.0",

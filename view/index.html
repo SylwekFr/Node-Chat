@@ -4,15 +4,30 @@
         <meta charset="utf-8" />
         <title>Node chat</title>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
     </head>
  
     <body>
-        <h1>Node.js let you chat</h1>
-        <form action='/' method=post id='msgform'>
-            <input type="txt" name="msg" id="msg" paceholder="type here your message"/>
-            <input type="submit" value="send" id="sendmsg" />
-        </form>
-        <div id="chatarea"></div>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                    <h1 class="display-4 text-center font-weight-bold">Node.js let you chat</h1>
+            </div>
+        </div>
+        <div class="container">   
+            <div class="row">
+                <form action='/' method=post id='msgform' class="form-inline offset-lg-2 mb-3 col-lg-8 align-items-center">
+                    <div class="input-group w-100" >
+                        <input type="text" name="msg" id="msg" class="form-control" style="text-align:right" paceholder="type here your message"/>
+                        <span class="input-group-append">
+                            <input type="submit" value="send" class="btn btn-success" id="sendmsg" />
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div id="chatarea" class="offset-lg-2 col-lg-8 bg-light shadow rounded"></div>
+            </div>
+        </div>
         <script src="/js/jquery.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="/js/bootstrap.min.js"></script>

@@ -14,6 +14,7 @@ app.use(session)
 .use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
 .use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
 .use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
+.use('/css', express.static(__dirname + '/public/css/'))
 .get('/', function (req, res) {
     res.sendFile('view/index.html' , { root : __dirname});
   });
