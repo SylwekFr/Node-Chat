@@ -46,7 +46,9 @@
             socket.on('newbie', function(pseudo) {
                 $('#chatarea').prepend("<p><em >"+ pseudo+' join the chat </em></p>');
             })
-
+            socket.on('diconnected', function(data){
+                $('#chatarea').prepend("<p><em >"+ data.pseudo+' left the chat </em></p>');
+            });
             $('#msgform').submit(function() {
                 let msg=$('#msg').val();
                 socket.emit('msg', msg);

@@ -32,6 +32,10 @@ io.sockets.on('connection', function (socket, pseudo) {
         msg=ent.encode(msg);
         pseudo=socket.handshake.session.pseudo
         socket.broadcast.emit('msg', {pseudo : pseudo, msg: msg })
-    });
+    })
+    .on('disconnect', function(){
+        let pseudo=socket.handshake.session.pseudo
+        socket.broadcast.emit("diconnected", {pseudo: pseudo});
+    })
 });
 server.listen(8080);
