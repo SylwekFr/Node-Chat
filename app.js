@@ -1,7 +1,7 @@
 let express = require('express')
 let app = express();
 let server = require('http').createServer(app);
-let io = require('socket.io').listen(server);
+let io = require('socket.io')(server);
 let ent = require('ent');
 let session = require('express-session')({
     secret: 'pseudo',
@@ -38,4 +38,6 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.broadcast.emit("diconnected", {pseudo: pseudo});
     })
 });
-server.listen(8080);
+server.listen(8080, () => {
+    console.info('server up on 8080')
+});
