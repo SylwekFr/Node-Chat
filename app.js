@@ -1,14 +1,14 @@
-let express = require('express')
-let app = express();
-let server = require('http').createServer(app);
-let io = require('socket.io')(server);
+const express = require('express')
+const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 let ent = require('ent');
 let session = require('express-session')({
     secret: 'pseudo',
     resave: true,
      saveUninitialized: true
     });
-var sharedsession = require("express-socket.io-session");
+let sharedsession = require("express-socket.io-session");
 
 app.use(session)
 .use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
